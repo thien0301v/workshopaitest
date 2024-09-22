@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.128.0">
+    <meta name="description" content="">
+<meta name="author" content="journeyoftheaverageguy@gmail.com">
+
+    <link rel="icon" href="/images/favicon.png" type="image/png">
+
+    <title>Document Extraction and Enrichment :: AWS System Manager</title>
+
+    
+    <link href="/css/nucleus.css?1726829994" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1726829994" rel="stylesheet">
+    <link href="/css/hybrid.css?1726829994" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1726829994" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1726829994" rel="stylesheet">
+    <link href="/css/auto-complete.css?1726829994" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1726829994" rel="stylesheet">
+    <link href="/css/theme.css?1726829994" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1726829994" rel="stylesheet">
+    
+    <link href="/css/theme-workshop.css?1726829994" rel="stylesheet">
+    
+    
+
+    <script src="/js/jquery-3.3.1.min.js?1726829994"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="/5-document-extraction-and-enrichment/">
+    <nav id="sidebar" class="showVisitedLinks">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a id="logo" href="/">
+
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="30%"><defs><style>.cls-1{fill:#fff;}.cls-2{fill:#f90;fill-rule:evenodd;}</style></defs><title>AWS-Logo_White-Color</title><path class="cls-1" d="M14.09,10.85a4.7,4.7,0,0,0,.19,1.48,7.73,7.73,0,0,0,.54,1.19.77.77,0,0,1,.12.38.64.64,0,0,1-.32.49l-1,.7a.83.83,0,0,1-.44.15.69.69,0,0,1-.49-.23,3.8,3.8,0,0,1-.6-.77q-.25-.42-.51-1a6.14,6.14,0,0,1-4.89,2.3,4.54,4.54,0,0,1-3.32-1.19,4.27,4.27,0,0,1-1.22-3.2A4.28,4.28,0,0,1,3.61,7.75,6.06,6.06,0,0,1,7.69,6.46a12.47,12.47,0,0,1,1.76.13q.92.13,1.91.36V5.73a3.65,3.65,0,0,0-.79-2.66A3.81,3.81,0,0,0,7.86,2.3a7.71,7.71,0,0,0-1.79.22,12.78,12.78,0,0,0-1.79.57,4.55,4.55,0,0,1-.58.22l-.26,0q-.35,0-.35-.52V2a1.09,1.09,0,0,1,.12-.58,1.2,1.2,0,0,1,.47-.35A10.88,10.88,0,0,1,5.77.32,10.19,10.19,0,0,1,8.36,0a6,6,0,0,1,4.35,1.35,5.49,5.49,0,0,1,1.38,4.09ZM7.34,13.38a5.36,5.36,0,0,0,1.72-.31A3.63,3.63,0,0,0,10.63,12,2.62,2.62,0,0,0,11.19,11a5.63,5.63,0,0,0,.16-1.44v-.7a14.35,14.35,0,0,0-1.53-.28,12.37,12.37,0,0,0-1.56-.1,3.84,3.84,0,0,0-2.47.67A2.34,2.34,0,0,0,5,11a2.35,2.35,0,0,0,.61,1.76A2.4,2.4,0,0,0,7.34,13.38Zm13.35,1.8a1,1,0,0,1-.64-.16,1.3,1.3,0,0,1-.35-.65L15.81,1.51a3,3,0,0,1-.15-.67.36.36,0,0,1,.41-.41H17.7a1,1,0,0,1,.65.16,1.4,1.4,0,0,1,.33.65l2.79,11,2.59-11A1.17,1.17,0,0,1,24.39.6a1.1,1.1,0,0,1,.67-.16H26.4a1.1,1.1,0,0,1,.67.16,1.17,1.17,0,0,1,.32.65L30,12.39,32.88,1.25A1.39,1.39,0,0,1,33.22.6a1,1,0,0,1,.65-.16h1.54a.36.36,0,0,1,.41.41,1.36,1.36,0,0,1,0,.26,3.64,3.64,0,0,1-.12.41l-4,12.86a1.3,1.3,0,0,1-.35.65,1,1,0,0,1-.64.16H29.25a1,1,0,0,1-.67-.17,1.26,1.26,0,0,1-.32-.67L25.67,3.64,23.11,14.34a1.26,1.26,0,0,1-.32.67,1,1,0,0,1-.67.17Zm21.36.44a11.28,11.28,0,0,1-2.56-.29,7.44,7.44,0,0,1-1.92-.67,1,1,0,0,1-.61-.93v-.84q0-.52.38-.52a.9.9,0,0,1,.31.06l.42.17a8.77,8.77,0,0,0,1.83.58,9.78,9.78,0,0,0,2,.2,4.48,4.48,0,0,0,2.43-.55,1.76,1.76,0,0,0,.86-1.57,1.61,1.61,0,0,0-.45-1.16A4.29,4.29,0,0,0,43,9.22l-2.41-.76A5.15,5.15,0,0,1,38,6.78a3.94,3.94,0,0,1-.83-2.41,3.7,3.7,0,0,1,.45-1.85,4.47,4.47,0,0,1,1.19-1.37A5.27,5.27,0,0,1,40.51.29,7.4,7.4,0,0,1,42.6,0a8.87,8.87,0,0,1,1.12.07q.57.07,1.08.19t.95.26a4.27,4.27,0,0,1,.7.29,1.59,1.59,0,0,1,.49.41.94.94,0,0,1,.15.55v.79q0,.52-.38.52a1.76,1.76,0,0,1-.64-.2,7.74,7.74,0,0,0-3.2-.64,4.37,4.37,0,0,0-2.21.47,1.6,1.6,0,0,0-.79,1.48,1.58,1.58,0,0,0,.49,1.18,4.94,4.94,0,0,0,1.83.92L44.55,7a5.08,5.08,0,0,1,2.57,1.6A3.76,3.76,0,0,1,47.9,11a4.21,4.21,0,0,1-.44,1.93,4.4,4.4,0,0,1-1.21,1.47,5.43,5.43,0,0,1-1.85.93A8.25,8.25,0,0,1,42.05,15.62Z"></path><path class="cls-2" d="M45.19,23.81C39.72,27.85,31.78,30,25,30A36.64,36.64,0,0,1,.22,20.57c-.51-.46-.06-1.09.56-.74A49.78,49.78,0,0,0,25.53,26.4,49.23,49.23,0,0,0,44.4,22.53C45.32,22.14,46.1,23.14,45.19,23.81Z"></path><path class="cls-2" d="M47.47,21.21c-.7-.9-4.63-.42-6.39-.21-.53.06-.62-.4-.14-.74,3.13-2.2,8.27-1.57,8.86-.83s-.16,5.89-3.09,8.35c-.45.38-.88.18-.68-.32C46.69,25.8,48.17,22.11,47.47,21.21Z"></path></svg>
+
+</a>
+
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="/js/lunr.min.js?1726829994"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1726829994"></script>
+<script type="text/javascript">
+    
+        var baseurl = "\/\/localhost:1313\/";
+    
+</script>
+<script type="text/javascript" src="/js/search.js?1726829994"></script>
+
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/1-introduce/" title="Introduction" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/1-introduce/">
+           <b> 1. </b> Introduction
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-prerequiste/" title="Preparation " class="dd-item 
+        
+        
+        
+        ">
+      <a href="/2-prerequiste/">
+           <b> 2. </b> Preparation 
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3-document-classification/" title="Document Classification" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/3-document-classification/">
+           <b> 3. </b> Document Classification
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3-document-classification/3.1-getting-started/" title="Getting Started" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/3-document-classification/3.1-getting-started/">
+           <b> 3.1 </b> Getting Started
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3-document-classification/step-1/" title="Setup notebook and upload sample documents to Amazon S3" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/3-document-classification/step-1/">
+           <b> 3.2 </b> Setup notebook and upload sample documents to Amazon S3
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3-document-classification/step-2/" title="Extract text from sample documents using Amazon Textract" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/3-document-classification/step-2/">
+           <b> 3.3 </b> Extract text from sample documents using Amazon Textract
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3-document-classification/step-3/" title="Prepare a CSV training dataset for Amazon Comprehend custom classifier training" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/3-document-classification/step-3/">
+           <b> 3.4 </b> Prepare a CSV training dataset for Amazon Comprehend custom classifier training
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3-document-classification/step-4/" title="Create Amazon Comprehend Classification training job" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/3-document-classification/step-4/">
+           <b> 3.5 </b> Create Amazon Comprehend Classification training job
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3-document-classification/step-5/" title="Classify documents with Amazon Comprehend custom classifier" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/3-document-classification/step-5/">
+           <b> 3.6 </b> Classify documents with Amazon Comprehend custom classifier
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3-document-classification/step-6/" title="Create Amazon Comprehend real-time endpoint (optional)" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/3-document-classification/step-6/">
+           <b> 3.7 </b> Create Amazon Comprehend real-time endpoint (optional)
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3-document-classification/step-7/" title="Classify a document with the real-time endpoint (optional)" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/3-document-classification/step-7/">
+           <b> 3.8 </b> Classify a document with the real-time endpoint (optional)
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/4-document-extraction/" title="Document Extraction" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/4-document-extraction/">
+           <b> 4. </b> Document Extraction
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/5-document-extraction-and-enrichment/" title="Document Extraction and Enrichment" class="dd-item 
+        
+        active
+        
+        ">
+      <a href="/5-document-extraction-and-enrichment/">
+           <b> 5. </b> Document Extraction and Enrichment
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/6-document-review-and-verification/" title="Document Review and Verification" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/6-document-review-and-verification/">
+           <b> 6. </b> Document Review and Verification
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/6-document-review-and-verification/6.1/" title="Amazon S3 bucket setup and requirements" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/6-document-review-and-verification/6.1/">
+           <b> 6.1 </b> Amazon S3 bucket setup and requirements
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/6-document-review-and-verification/6.2/" title="Verification" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/6-document-review-and-verification/6.2/">
+           <b> 6.2 </b> Verification
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/7-cleanup/" title="Clean up resources" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/7-cleanup/">
+          <b>7. </b>Clean up resources
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+         
+    </ul>
+
+    
+    
+      <section id="shortcuts">
+        <h3>More</h3>
+        <ul>
+          
+              <li> 
+                  <a class="padding" href="https://www.facebook.com/groups/awsstudygroupfcj/"><i class='fab fa-facebook'></i> AWS Study Group</a>
+              </li>
+          
+        </ul>
+      </section>
+    
+
+    
+    <section id="prefooter">
+      <hr/>
+      <ul>
+      
+        <li>
+          <a class="padding">
+            <i class="fas fa-language fa-fw"></i>
+          <div class="select-style">
+            <select id="select-language" onchange="location = this.value;">
+          
+          
+          
+              
+              
+                  
+                    
+                    
+                      <option id="en" value="//localhost:1313/5-document-extraction-and-enrichment/" selected>English</option>
+                    
+                  
+              
+                  
+              
+          
+              
+              
+                  
+              
+                  
+                    
+                    
+                      <option id="vi" value="//localhost:1313/vi/5-document-extraction-and-enrichment/">Tiếng Việt</option>
+                    
+                  
+              
+          
+        </select>
+        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+          width="255px" height="255px" viewBox="0 0 255 255" style="enable-background:new 0 0 255 255;" xml:space="preserve">
+          <g>
+            <g id="arrow-drop-down">
+              <polygon points="0,63.75 127.5,191.25 255,63.75 		" />
+            </g>
+          </g>
+        </svg>
+        </div>
+        </a>
+        </li>
+      
+      
+      
+        <li><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
+      
+      </ul>
+    </section>
+    
+    <section id="footer">
+      <left>
+    
+     <b> Workshop</b> <br>
+    <img src="https://hitwebcounter.com/counter/counter.php?page=7920860&style=0038&nbdigits=9&type=page&initCount=0" title="Migrate" Alt="web counter"   border="0" /></a>  <br>
+     <b> <a href="https://cloudjourney.awsstudygroup.com/">Cloud Journey</a></b> <br>
+    <img src="https://hitwebcounter.com/counter/counter.php?page=7830807&style=0038&nbdigits=9&type=page&initCount=0" title="Total CLoud Journey" Alt="web counter"   border="0"   />
+     
+</left>
+<left>
+    <br>
+    <br>
+        <b> Last Updated </b> <br>
+        <i><font color=orange>30-01-2022</font></i>
+    </left>
+    <left>
+        <br>
+        <br>
+            <b> Team </b> <br>
+           
+            <i> <a href="https://www.linkedin.com/in/sutrinh/"  style="color:orange">Sử Trịnh  </a> <br>
+                <a href="https://www.linkedin.com/in/jotaguy"  style="color:orange">Gia Hưng </a> <br>
+                <a href="https://www.linkedin.com/in/hiepnguyendt"  style="color:orange">Thanh Hiệp </a>
+               
+        </i>
+        </left>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            <a href='/'>Intelligent Document Processing with AWS AI Services</a> > Document Extraction and Enrichment
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#what-is-named-entity-recognition-ner">What is Named Entity Recognition (NER)?</a></li>
+        <li><a href="#getting-started">Getting Started</a></li>
+        <li><a href="#step-1-setup-notebook">Step 1: Setup notebook</a></li>
+        <li><a href="#step-2-perform-name-entity-recognition-using-amazon-comprehend">Step 2: Perform Name Entity Recognition using Amazon Comprehend</a></li>
+        <li><a href="#step-3-train-a-custom-amazon-comprehend-entity-recognizer">Step 3: Train a custom Amazon Comprehend entity recognizer</a></li>
+        <li><a href="#step-4-create-custom-entity-recognizer-real-time-endpoint">Step 4: Create custom entity recognizer real-time endpoint</a></li>
+        <li><a href="#document-enrichment-1">Document Enrichment 1</a></li>
+        <li><a href="#enrichment-2-perform-redaction-document-enrichment">Enrichment 2: Perform redaction document enrichment</a></li>
+        <li><a href="#conclusion">Conclusion</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              Document Extraction and Enrichment
+            </h1>
+          
+
+        
+
+
+
+	<blockquote>
+<p>⚠️ PRE-REQUISITE: In order to execute this notebook, make sure you have completed the first notebook 01-idp-document-classification.ipynb</p>
+</blockquote>
+<h3 id="overview">Overview</h3>
+<p>So far, in the previous two modules, we have categorized documents and identified the bank statements, invoices, and receipt documents. In this module we will look at Amazon Comprehend&rsquo;s default entities and also train an Amazon Comprehend custom entity recognizer and deploy an endpoint with it. The purpose of the custom entity recognizer is to identify the specific entities and generate custom metadata about our document in CSV format to be later analyzed by the business use case. In adition to this we also want to identify any checking and savings account numbers in the bank statements and perform redactions on them.
+<img alt="arch2" src="/images/4/arch2.png"></p>
+<h3 id="what-is-named-entity-recognition-ner">What is Named Entity Recognition (NER)?</h3>
+<p>Named entity recognition (NER) is a natural language processing (NLP) sub-task that involves sifting through text data to locate noun phrases called named entities and categorizing each with a label, such as person, organization, or brand. For example, in the statement “I recently subscribed to Amazon Prime,” Amazon Prime is the named entity and can be categorized as a brand.</p>
+<h3 id="getting-started">Getting Started</h3>
+<p>Open the <code>03-idp-document-enrichment.ipynb</code> notebook and follow the steps below
+<img alt="s1" src="/images/5/s1.png"></p>
+<h3 id="step-1-setup-notebook">Step 1: Setup notebook</h3>
+<p>In this step, we will import some necessary libraries that will be used throughout this notebook.
+<img alt="s2" src="/images/5/s2.png"></p>
+<h3 id="step-2-perform-name-entity-recognition-using-amazon-comprehend">Step 2: Perform Name Entity Recognition using Amazon Comprehend</h3>
+<p>We have categorized our documents according to their respective document types and stored them in S3. Next, we will perform name entity recognition for 1 bank statement and 1 receipt using Amazon Comprehend NER, in this case Comprehend will extract the prebuilt generic entity types from the documents.</p>
+<p>We will start the process by loading the extracted document text from S3 into a dataframe and subsequently using Amazon Comprehend DetectEntities API.
+<img alt="s3" src="/images/5/s3.png">
+Execute entity extraction on Bank Statement
+You can see various entities in the text from the our sample bank statement. Note that these are the default entities that Amazon Comprehend has detected using the default pre-trained entity recognizer.
+<img alt="s4" src="/images/5/s4.png"></p>
+<p>Although entity extraction worked fairly well in identifying the generic entity types for everything in the documents, we want specific entities to be recognized for our use case. More specifically, we need to identify the customer&rsquo;s Savings and Checking bank account numbers, for example we want the entity types to be &ldquo;CHECKING_AC&rdquo; and &ldquo;SAVINGS_AC&rdquo;.</p>
+<p>Amazon Comprehend&rsquo;s default prebuilt entity recognizer isn&rsquo;t aware of these entity types, so we will need to train and use a custom entity recognizer in this notebook. We will also perform some document enrichments for example, in the bank statement we want to redact the customer&rsquo;s account numbers. We will discuss more and do all of this in the next notebook.</p>
+<h3 id="step-3-train-a-custom-amazon-comprehend-entity-recognizer">Step 3: Train a custom Amazon Comprehend entity recognizer</h3>
+<p>We will be training a custom Amazon Comprehend entity recognizer. There are two ways a custom recognizer can be trained -</p>
+<ul>
+<li><a href="https://docs.aws.amazon.com/comprehend/latest/dg/cer-annotation.html">Using Annotations</a></li>
+<li><a href="https://docs.aws.amazon.com/comprehend/latest/dg/cer-entity-list.html">Using Entity Lists</a>
+Annotations uses a large set of PDF files that have been annotated. These annotations can be created with service such as Amazon Ground Truth where real human workers can review your files and annotate them. This method is quite involved and if you are interested to learn more refer to this blog and this blog.</li>
+</ul>
+<p>In our case, we will use Entity Lists, which is a CSV file that should contain the texts and it&rsquo;s corresponding entity type. The entities in this file is going to be specific to our business needs. For the purposes of this exercise, we have provided an entity list in CSV format in the <code>/entity-training/</code> directory called entitylist.csv. This file contains a custom entity Type for customer account numbers. We have used CHECKING_AC and SAVINGS_AC as the custom entity types. With this, we ultimately need the custom entity recognizer to recognize the savings and checking bank account numbers.</p>
+<p>Let&rsquo;s take a look at our entity list.
+<img alt="s5" src="/images/5/s5.png">
+Let&rsquo;s train a custom entity recognizer with Amazon Comprehend. In order to train a custom entity recognizer we will need the entity list and the set of documents to train the model. We will use the same set of documents that we used earlier to train the custom classifer for this purpose.</p>
+<p>Each custom entity needs atleast 100 samples in the data corpus (documents) for training purposes, meaning you should have atleast a 100 documents containing examples of each of the custom entities in your training dataset. Also, a minimum of 250 entity matches are needed per entity in the entity list to train a model for custom entity recognition. We have provided a training corpus named entity_training_corpus.csv which can be used to train the entity recognizer along with the entity list. Note that this corpus was generated the same way we generated training data for training a custom classifier in the first notebook. With these two data sets we will use Amazon Comprehend&rsquo;s CreateEntityRecognizer API.</p>
+<p><img alt="s6" src="/images/5/s6.png"></p>
+<p>Let&rsquo;s now train a custom entity recognizer with this data and the entity list of savings and checking account numbers
+<img alt="s7" src="/images/5/s7.png">
+Check status of the Comprehend custom entity recognizer job
+<img alt="s8" src="/images/5/s8.png"></p>
+<h3 id="step-4-create-custom-entity-recognizer-real-time-endpoint">Step 4: Create custom entity recognizer real-time endpoint</h3>
+<p>We will create a real time entity recognizer endpoint with the trained entity recognizer.
+<img alt="s9" src="/images/5/s9.png">
+Once created, the endpoint can be located in the Amazon Comprehend console.
+<img alt="s10" src="/images/5/s10.png">
+<img alt="s11" src="/images/5/s11.png"></p>
+<h3 id="document-enrichment-1">Document Enrichment 1</h3>
+<p>We now have a custom entity recognizer real-time endpoint using which we can extract the custom entities from one of our bank statement documents.
+<img alt="s11" src="/images/5/idp-custom-entity.png">
+Now instead of returning us generic entities, Amazon Comprehend is returning us the entities from our scanned document that we are interested, i.e. the checking and savings account number.
+<img alt="s12" src="/images/5/s12.png"></p>
+<h3 id="enrichment-2-perform-redaction-document-enrichment">Enrichment 2: Perform redaction document enrichment</h3>
+<p>We still need to perform some enrichments on the document. Since the document contains the customers savings and checking account numbers, we would like to redact those. Since we already know, by means of our custom entity, the savings and checking account number of the customer, we can easily use Amazon Textract&rsquo;s geometry data to redact that information wherever they appear in the document.
+<img alt="s11" src="/images/5/idp-redaction.png"></p>
+<p>We will pick a bank statement from our list of documents, we will get the S3 location of the document and then perform the actions below-</p>
+<ul>
+<li>Use Amazon Textract to get the geometry information i.e. the bounding boxes, of all the lines in the document</li>
+<li>Use the extracted text above to identify the entities <code>CHECKING_AC</code> and <code>SAVINGS_AC</code>, using Comprehend custom entity recognizer</li>
+<li>Find the bounding box for the <code>CHECKING_AC</code> and <code>SAVINGS_AC</code> words from the Textract response</li>
+<li>Use the bounding box geometry to annotate the document and redact the customer name and address.
+<img alt="s13" src="/images/5/s13.png"></li>
+</ul>
+<p>The function above finds the custom entities in the document, finds the corresponding geometry information of the custom entity text and perform redaction on the document. Let&rsquo;s call it for a sample bank statement.
+<img alt="s14" src="/images/5/s14.png">
+Once our redacted file has been generated, lets take a look at it&hellip;
+<img alt="s15" src="/images/5/s15.png">
+<img alt="s14" src="/images/5/redacted-doc.png">
+As you can see, the checking and savings account numbers are hidden in the document now.</p>
+<h3 id="conclusion">Conclusion</h3>
+<p>In this notebook we trained an Amazon Comprehend custom entity recognizer using our own entity list so that we can extract those entities from our documents. We used 2 entities CHECKING_AC, and SAVINGS_AC. We then created an endpoint with the custom entity recognizer and performed a detect_entities with the endpoint with one of the bank statements. Finally, we saved the extracted entities into a CSV file and uploaded it to S3 for further analysis.</p>
+<p>We still needed to perform some enrichments on the document. Since the document contains the customers checking and savings account numbers, we would like to redact those. Since we already know, by means of our custom entity, the customer&rsquo;s checking and savings bank account numbers, we used Amazon Textract&rsquo;s geometry data to redact that information in the document.</p>
+
+
+
+
+
+<footer class=" footline" >
+	
+</footer>
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="/4-document-extraction/" title="Document Extraction"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="/6-document-review-and-verification/" title="Document Review and Verification" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="/js/clipboard.min.js?1726829994"></script>
+    <script src="/js/perfect-scrollbar.min.js?1726829994"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1726829994"></script>
+    <script src="/js/jquery.sticky.js?1726829994"></script>
+    <script src="/js/featherlight.min.js?1726829994"></script>
+    <script src="/js/highlight.pack.js?1726829994"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/js/modernizr.custom-3.6.0.js?1726829994"></script>
+    <script src="/js/learn.js?1726829994"></script>
+    <script src="/js/hugo-learn.js?1726829994"></script>
+
+    <link href="/mermaid/mermaid.css?1726829994" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1726829994"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-158079754-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  </body>
+</html>

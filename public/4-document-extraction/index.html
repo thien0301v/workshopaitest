@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.128.0">
+    <meta name="description" content="">
+<meta name="author" content="journeyoftheaverageguy@gmail.com">
+
+    <link rel="icon" href="/images/favicon.png" type="image/png">
+
+    <title>Document Extraction :: AWS System Manager</title>
+
+    
+    <link href="/css/nucleus.css?1726829994" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1726829994" rel="stylesheet">
+    <link href="/css/hybrid.css?1726829994" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1726829994" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1726829994" rel="stylesheet">
+    <link href="/css/auto-complete.css?1726829994" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1726829994" rel="stylesheet">
+    <link href="/css/theme.css?1726829994" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1726829994" rel="stylesheet">
+    
+    <link href="/css/theme-workshop.css?1726829994" rel="stylesheet">
+    
+    
+
+    <script src="/js/jquery-3.3.1.min.js?1726829994"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="/4-document-extraction/">
+    <nav id="sidebar" class="showVisitedLinks">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a id="logo" href="/">
+
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="30%"><defs><style>.cls-1{fill:#fff;}.cls-2{fill:#f90;fill-rule:evenodd;}</style></defs><title>AWS-Logo_White-Color</title><path class="cls-1" d="M14.09,10.85a4.7,4.7,0,0,0,.19,1.48,7.73,7.73,0,0,0,.54,1.19.77.77,0,0,1,.12.38.64.64,0,0,1-.32.49l-1,.7a.83.83,0,0,1-.44.15.69.69,0,0,1-.49-.23,3.8,3.8,0,0,1-.6-.77q-.25-.42-.51-1a6.14,6.14,0,0,1-4.89,2.3,4.54,4.54,0,0,1-3.32-1.19,4.27,4.27,0,0,1-1.22-3.2A4.28,4.28,0,0,1,3.61,7.75,6.06,6.06,0,0,1,7.69,6.46a12.47,12.47,0,0,1,1.76.13q.92.13,1.91.36V5.73a3.65,3.65,0,0,0-.79-2.66A3.81,3.81,0,0,0,7.86,2.3a7.71,7.71,0,0,0-1.79.22,12.78,12.78,0,0,0-1.79.57,4.55,4.55,0,0,1-.58.22l-.26,0q-.35,0-.35-.52V2a1.09,1.09,0,0,1,.12-.58,1.2,1.2,0,0,1,.47-.35A10.88,10.88,0,0,1,5.77.32,10.19,10.19,0,0,1,8.36,0a6,6,0,0,1,4.35,1.35,5.49,5.49,0,0,1,1.38,4.09ZM7.34,13.38a5.36,5.36,0,0,0,1.72-.31A3.63,3.63,0,0,0,10.63,12,2.62,2.62,0,0,0,11.19,11a5.63,5.63,0,0,0,.16-1.44v-.7a14.35,14.35,0,0,0-1.53-.28,12.37,12.37,0,0,0-1.56-.1,3.84,3.84,0,0,0-2.47.67A2.34,2.34,0,0,0,5,11a2.35,2.35,0,0,0,.61,1.76A2.4,2.4,0,0,0,7.34,13.38Zm13.35,1.8a1,1,0,0,1-.64-.16,1.3,1.3,0,0,1-.35-.65L15.81,1.51a3,3,0,0,1-.15-.67.36.36,0,0,1,.41-.41H17.7a1,1,0,0,1,.65.16,1.4,1.4,0,0,1,.33.65l2.79,11,2.59-11A1.17,1.17,0,0,1,24.39.6a1.1,1.1,0,0,1,.67-.16H26.4a1.1,1.1,0,0,1,.67.16,1.17,1.17,0,0,1,.32.65L30,12.39,32.88,1.25A1.39,1.39,0,0,1,33.22.6a1,1,0,0,1,.65-.16h1.54a.36.36,0,0,1,.41.41,1.36,1.36,0,0,1,0,.26,3.64,3.64,0,0,1-.12.41l-4,12.86a1.3,1.3,0,0,1-.35.65,1,1,0,0,1-.64.16H29.25a1,1,0,0,1-.67-.17,1.26,1.26,0,0,1-.32-.67L25.67,3.64,23.11,14.34a1.26,1.26,0,0,1-.32.67,1,1,0,0,1-.67.17Zm21.36.44a11.28,11.28,0,0,1-2.56-.29,7.44,7.44,0,0,1-1.92-.67,1,1,0,0,1-.61-.93v-.84q0-.52.38-.52a.9.9,0,0,1,.31.06l.42.17a8.77,8.77,0,0,0,1.83.58,9.78,9.78,0,0,0,2,.2,4.48,4.48,0,0,0,2.43-.55,1.76,1.76,0,0,0,.86-1.57,1.61,1.61,0,0,0-.45-1.16A4.29,4.29,0,0,0,43,9.22l-2.41-.76A5.15,5.15,0,0,1,38,6.78a3.94,3.94,0,0,1-.83-2.41,3.7,3.7,0,0,1,.45-1.85,4.47,4.47,0,0,1,1.19-1.37A5.27,5.27,0,0,1,40.51.29,7.4,7.4,0,0,1,42.6,0a8.87,8.87,0,0,1,1.12.07q.57.07,1.08.19t.95.26a4.27,4.27,0,0,1,.7.29,1.59,1.59,0,0,1,.49.41.94.94,0,0,1,.15.55v.79q0,.52-.38.52a1.76,1.76,0,0,1-.64-.2,7.74,7.74,0,0,0-3.2-.64,4.37,4.37,0,0,0-2.21.47,1.6,1.6,0,0,0-.79,1.48,1.58,1.58,0,0,0,.49,1.18,4.94,4.94,0,0,0,1.83.92L44.55,7a5.08,5.08,0,0,1,2.57,1.6A3.76,3.76,0,0,1,47.9,11a4.21,4.21,0,0,1-.44,1.93,4.4,4.4,0,0,1-1.21,1.47,5.43,5.43,0,0,1-1.85.93A8.25,8.25,0,0,1,42.05,15.62Z"></path><path class="cls-2" d="M45.19,23.81C39.72,27.85,31.78,30,25,30A36.64,36.64,0,0,1,.22,20.57c-.51-.46-.06-1.09.56-.74A49.78,49.78,0,0,0,25.53,26.4,49.23,49.23,0,0,0,44.4,22.53C45.32,22.14,46.1,23.14,45.19,23.81Z"></path><path class="cls-2" d="M47.47,21.21c-.7-.9-4.63-.42-6.39-.21-.53.06-.62-.4-.14-.74,3.13-2.2,8.27-1.57,8.86-.83s-.16,5.89-3.09,8.35c-.45.38-.88.18-.68-.32C46.69,25.8,48.17,22.11,47.47,21.21Z"></path></svg>
+
+</a>
+
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="/js/lunr.min.js?1726829994"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1726829994"></script>
+<script type="text/javascript">
+    
+        var baseurl = "\/\/localhost:1313\/";
+    
+</script>
+<script type="text/javascript" src="/js/search.js?1726829994"></script>
+
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/1-introduce/" title="Introduction" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/1-introduce/">
+           <b> 1. </b> Introduction
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-prerequiste/" title="Preparation " class="dd-item 
+        
+        
+        
+        ">
+      <a href="/2-prerequiste/">
+           <b> 2. </b> Preparation 
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3-document-classification/" title="Document Classification" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/3-document-classification/">
+           <b> 3. </b> Document Classification
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3-document-classification/3.1-getting-started/" title="Getting Started" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/3-document-classification/3.1-getting-started/">
+           <b> 3.1 </b> Getting Started
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3-document-classification/step-1/" title="Setup notebook and upload sample documents to Amazon S3" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/3-document-classification/step-1/">
+           <b> 3.2 </b> Setup notebook and upload sample documents to Amazon S3
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3-document-classification/step-2/" title="Extract text from sample documents using Amazon Textract" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/3-document-classification/step-2/">
+           <b> 3.3 </b> Extract text from sample documents using Amazon Textract
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3-document-classification/step-3/" title="Prepare a CSV training dataset for Amazon Comprehend custom classifier training" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/3-document-classification/step-3/">
+           <b> 3.4 </b> Prepare a CSV training dataset for Amazon Comprehend custom classifier training
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3-document-classification/step-4/" title="Create Amazon Comprehend Classification training job" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/3-document-classification/step-4/">
+           <b> 3.5 </b> Create Amazon Comprehend Classification training job
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3-document-classification/step-5/" title="Classify documents with Amazon Comprehend custom classifier" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/3-document-classification/step-5/">
+           <b> 3.6 </b> Classify documents with Amazon Comprehend custom classifier
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3-document-classification/step-6/" title="Create Amazon Comprehend real-time endpoint (optional)" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/3-document-classification/step-6/">
+           <b> 3.7 </b> Create Amazon Comprehend real-time endpoint (optional)
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3-document-classification/step-7/" title="Classify a document with the real-time endpoint (optional)" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/3-document-classification/step-7/">
+           <b> 3.8 </b> Classify a document with the real-time endpoint (optional)
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/4-document-extraction/" title="Document Extraction" class="dd-item 
+        
+        active
+        
+        ">
+      <a href="/4-document-extraction/">
+           <b> 4. </b> Document Extraction
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/5-document-extraction-and-enrichment/" title="Document Extraction and Enrichment" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/5-document-extraction-and-enrichment/">
+           <b> 5. </b> Document Extraction and Enrichment
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/6-document-review-and-verification/" title="Document Review and Verification" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/6-document-review-and-verification/">
+           <b> 6. </b> Document Review and Verification
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/6-document-review-and-verification/6.1/" title="Amazon S3 bucket setup and requirements" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/6-document-review-and-verification/6.1/">
+           <b> 6.1 </b> Amazon S3 bucket setup and requirements
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/6-document-review-and-verification/6.2/" title="Verification" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/6-document-review-and-verification/6.2/">
+           <b> 6.2 </b> Verification
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/7-cleanup/" title="Clean up resources" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/7-cleanup/">
+          <b>7. </b>Clean up resources
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+         
+    </ul>
+
+    
+    
+      <section id="shortcuts">
+        <h3>More</h3>
+        <ul>
+          
+              <li> 
+                  <a class="padding" href="https://www.facebook.com/groups/awsstudygroupfcj/"><i class='fab fa-facebook'></i> AWS Study Group</a>
+              </li>
+          
+        </ul>
+      </section>
+    
+
+    
+    <section id="prefooter">
+      <hr/>
+      <ul>
+      
+        <li>
+          <a class="padding">
+            <i class="fas fa-language fa-fw"></i>
+          <div class="select-style">
+            <select id="select-language" onchange="location = this.value;">
+          
+          
+          
+              
+              
+                  
+                    
+                    
+                      <option id="en" value="//localhost:1313/4-document-extraction/" selected>English</option>
+                    
+                  
+              
+                  
+              
+          
+              
+              
+                  
+              
+                  
+                    
+                    
+                      <option id="vi" value="//localhost:1313/vi/4-document-extraction/">Tiếng Việt</option>
+                    
+                  
+              
+          
+        </select>
+        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+          width="255px" height="255px" viewBox="0 0 255 255" style="enable-background:new 0 0 255 255;" xml:space="preserve">
+          <g>
+            <g id="arrow-drop-down">
+              <polygon points="0,63.75 127.5,191.25 255,63.75 		" />
+            </g>
+          </g>
+        </svg>
+        </div>
+        </a>
+        </li>
+      
+      
+      
+        <li><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
+      
+      </ul>
+    </section>
+    
+    <section id="footer">
+      <left>
+    
+     <b> Workshop</b> <br>
+    <img src="https://hitwebcounter.com/counter/counter.php?page=7920860&style=0038&nbdigits=9&type=page&initCount=0" title="Migrate" Alt="web counter"   border="0" /></a>  <br>
+     <b> <a href="https://cloudjourney.awsstudygroup.com/">Cloud Journey</a></b> <br>
+    <img src="https://hitwebcounter.com/counter/counter.php?page=7830807&style=0038&nbdigits=9&type=page&initCount=0" title="Total CLoud Journey" Alt="web counter"   border="0"   />
+     
+</left>
+<left>
+    <br>
+    <br>
+        <b> Last Updated </b> <br>
+        <i><font color=orange>30-01-2022</font></i>
+    </left>
+    <left>
+        <br>
+        <br>
+            <b> Team </b> <br>
+           
+            <i> <a href="https://www.linkedin.com/in/sutrinh/"  style="color:orange">Sử Trịnh  </a> <br>
+                <a href="https://www.linkedin.com/in/jotaguy"  style="color:orange">Gia Hưng </a> <br>
+                <a href="https://www.linkedin.com/in/hiepnguyendt"  style="color:orange">Thanh Hiệp </a>
+               
+        </i>
+        </left>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            <a href='/'>Intelligent Document Processing with AWS AI Services</a> > Document Extraction
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#extracting-data-from-documents-using-amazon-textract">Extracting data from documents using Amazon Textract</a></li>
+        <li><a href="#parsing-amazon-textract-api-responses">Parsing Amazon Textract API responses</a></li>
+        <li><a href="#getting-started-with-lab">Getting Started with Lab</a></li>
+        <li><a href="#step-1-setup-notebook">Step 1: Setup notebook</a></li>
+        <li><a href="#step-2-extract-unstructured-data-with-amazon-textract">Step 2: Extract unstructured data with Amazon Textract</a></li>
+        <li><a href="#step-3-extract-table-data-using-amazon-textract">Step 3: Extract table data using Amazon Textract</a></li>
+        <li><a href="#step-4-extract-forms-keyvalue-data-using-amazon-textract">Step 4: Extract forms (key/value) data using Amazon Textract</a></li>
+        <li><a href="#step-5-query-based-extraction-using-amazon-textract">Step 5: Query based extraction using Amazon Textract</a></li>
+        <li><a href="#step-6-signature-detection-with-amazon-textract">Step 6: Signature detection with Amazon Textract</a></li>
+        <li><a href="#step-7-extracting-invoicesreceipts-with-amazon-textract">Step 7: Extracting invoices/receipts with Amazon Textract</a></li>
+        <li><a href="#step-8-extracting-identity-documents-with-amazon-textract">Step 8: Extracting identity documents with Amazon Textract</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              Document Extraction
+            </h1>
+          
+
+        
+
+
+
+	<h3 id="extracting-data-from-documents-using-amazon-textract">Extracting data from documents using Amazon Textract</h3>
+<p>Amazon Textract is a machine learning (ML) service that automatically extracts text, handwriting, and data from scanned documents. It goes beyond simple optical character recognition (OCR) to identify, understand, and extract data from forms and tables. Expand the following sections to take a brief look at the document extraction capabilities of Amazon Textract.</p>
+<h3 id="parsing-amazon-textract-api-responses">Parsing Amazon Textract API responses</h3>
+<p>You can extract text and structured data information using Amazon Textract&rsquo;s <a href="https://docs.aws.amazon.com/textract/latest/dg/API_DetectDocumentText.html"><code>DetectDocumentText</code></a>  and AnalyzeDocument  APIs respectively. These APIs respond with JSON data which contains WORDS, LINES, FORMS, TABLES, geometry or bounding box information, relationships and so on. This JSON response can be tricky to parse, especially for larger or multi-page documents. For this purpose, we will use a group of tools named <strong>amazon-textract-textractor</strong> that makes it easy to obtain information such as WORDS, LINES, TABLES, and FORMS from the document, and obtain bounding box information. Following are the features available</p>
+<ul>
+<li>A <a href="https://github.com/aws-samples/amazon-textract-textractor/tree/master/caller">caller</a>  which provides a collection of ready to use functions and sample implementations to speed up the evaluation and development for any project using Amazon Textract. Making it easy to call Amazon Textract regardless of file type and location.</li>
+<li>A <a href="https://github.com/aws-samples/amazon-textract-response-parser">response parser</a>  to easily parse JSON returned by Amazon Textract. The library parses JSON and provides programming language specific constructs to work with different parts of the document.</li>
+<li>A <a href="https://github.com/aws-samples/amazon-textract-textractor/tree/master/prettyprinter">prettyprinter</a>  which provides functions to format the output received from Amazon Textract in more easily consumable formats such as CSV or markdown.</li>
+<li>An <a href="https://github.com/aws-samples/amazon-textract-textractor/tree/master/overlayer">overlayer</a>  that gets you bounding box geometry information that can be used for annotation, or redaction purposes.</li>
+</ul>
+<p>Refer to the documentation for these individual tools linked above to learn more. We have used these tools throughout the workshop.</p>
+<h3 id="getting-started-with-lab">Getting Started with Lab</h3>
+<p>In this part, we will look at ways to extract information from documents. Open the <code>02-idp-document-extraction.ipynb</code> notebook in Amazon SageMaker Studio and follow the steps below.
+<img alt="s1" src="/images/4/s1.png"></p>
+<h3 id="step-1-setup-notebook">Step 1: Setup notebook</h3>
+<p>In this step we will select kernel like previous notebook that will be used in the notebook.
+<img alt="s2" src="/images/4/s2.png">
+Then run scripts in Step 1
+Let&rsquo;s select a bank statement we classified in the previous exercise
+<img alt="s3" src="/images/4/s3.png">
+<img alt="s4" src="/images/4/s4.png"></p>
+<h3 id="step-2-extract-unstructured-data-with-amazon-textract">Step 2: Extract unstructured data with Amazon Textract</h3>
+<p>In this step we will mainly look at how to extract text information (LINES and WORDS) from one of the bank statements. Text data in the form of WORDS and LINES can be extracted from documents using Amazon Textract DetectDocumentText API. Following code calls the API to extract text from documents.</p>
+<p>Amazon Textract is an ML powered OCR service that is capable of detecting and extracting text from documents. Text data in the form of WORDS and LINES can be extracted from documents using Amazon Textract DetectDocumentText API. Let&rsquo;s extract the words and lines from the bank statement.
+<img alt="s5" src="/images/4/s5.png">
+As you can notice, we were able to extract the LINES and WORDS from the document, but we also lost some of the structural formatting within the document. For example the document contains a few tables and we would like to extract the table information in a tabular structure. So let&rsquo;s do that next.</p>
+<h3 id="step-3-extract-table-data-using-amazon-textract">Step 3: Extract table data using Amazon Textract</h3>
+<p>In this step we will take a brief look at how to extract table information from the bank statemente. Our bank statement has two tables.
+<img alt="s6" src="/images/4/s6.png">
+As you can see, the response from Amazon Textract is a large <code>JSON</code> object that contains a lot of information. Let&rsquo;s parse out the table data from this reponse. To do this, we will see how to extract the tables using the textract response parser tool that we installed earlier. To learn about how Textract Table response works, refer to the <a href="https://docs.aws.amazon.com/textract/latest/dg/how-it-works-tables.html">documentation</a>
+<img alt="s7" src="/images/4/s7.png">
+In the code cells above, we used the Textract <code>AnalyzeDocument</code> API to extract info from the document and subsequently used textract response parser Document to parse out the tables from the <code>JSON</code> response. We can further use additional tooling to call the Textract API and use textract pretty printer tool to view the tables in a slightly more human readable way. We will see how to extract the tables using the Textract pretty printer tool. We will also use <code>call_textract</code> method from the Textract Caller tool that we installed earlier. These set of tools make it easy for us to make Textract API calls and parse it&rsquo;s JSON output. In our subsequent sections, we will make use of these tools to make API calls and subsequently to parse the JSON response.
+<img alt="s8" src="/images/4/s8.png">
+In the code cell above, we extracted the tables as a Python List and then converted them to Pandas DataFrame. You can also extract tables in other formats such as CSV, TSV etc. Refer to the <a href="https://github.com/aws-samples/amazon-textract-textractor/tree/master/prettyprinter">PrettyPrinter</a> documentation for more. Now let&rsquo;s look at the DataFrames.
+<img alt="s9" src="/images/4/s9.png"></p>
+<h3 id="step-4-extract-forms-keyvalue-data-using-amazon-textract">Step 4: Extract forms (key/value) data using Amazon Textract</h3>
+<p>Let&rsquo;s look at how Amazon Textract can be used to extract form data from the document. In this example, we will use a sample Employment Verification form.
+<img alt="s10" src="/images/4/s10.png">
+In our previous example, our document was in S3 and we called Amazon Textract by specifying the S3 location of the document. In this case our document is present locally, we can either upload this document into S3, or we can use the document&rsquo;s Byte Array from our local environment to call the API. Let&rsquo;s use the document Byte Array for this example. Note that this method only applies to Textract Sync (real-time) APIs, since the async APIs only support documents placed in S#. In the code cell below, we first convert our document to a Byte array, and then call the <code>AnalyzeDocument</code> API with FORMS feature. Subsequently we use textract response parser tool to parse out the form key/value pairs and print them out.
+<img alt="s11" src="/images/4/s11.png">
+And the result
+<img alt="s12" src="/images/4/s12.png"></p>
+<h3 id="step-5-query-based-extraction-using-amazon-textract">Step 5: Query based extraction using Amazon Textract</h3>
+<p>When processing a document with Amazon Textract, you may add queries to your analysis to specify what information you need. This involves passing a question, such as &ldquo;What is the customer&rsquo;s social security number?&rdquo; to Amazon Textract. Amazon Textract will then find the information in the document for that question and return it in a response structure separate from the rest of the document&rsquo;s information. Queries can be processed alone, or in combination with any other FeatureType, such as TABLES or FORMS. Queries can be a powerful tool in situations where only a few pieces of critical information is desired from a document.</p>
+<p>Let&rsquo;s pass a couple of Queries to extract from our Employment Verification form.
+<img alt="s13" src="/images/4/s13.png">
+<img alt="s14" src="/images/4/s14.png"></p>
+<h3 id="step-6-signature-detection-with-amazon-textract">Step 6: Signature detection with Amazon Textract</h3>
+<p>Amazon Textract can detect the presence of signatures in documents. The AnalyzeDocument API has the following four feature types – Forms, Tables, Queries, and Signatures. The Signatures feature can be used by itself or in combination with other feature types. When used by itself, Signatures feature type provides a json response that includes a) location and confidence scores of the detected signatures and b) raw text (words and lines) from the documents. If the Signatures feature is used along with Forms feature that extracts key value pairs in a form, the detected signature will be associated as a value to the relevant key. Similarly, when used along with Tables feature type, the detected signature will be associated to a cell within the table.</p>
+<p>Let&rsquo;s try to detect the signatures in our Employment Verification form.
+<img alt="s15" src="/images/4/s15.png"></p>
+<p>Textract has detected three signatures in the document along with their bounding box information along with the confidence scores.</p>
+<h3 id="step-7-extracting-invoicesreceipts-with-amazon-textract">Step 7: Extracting invoices/receipts with Amazon Textract</h3>
+<p>Let&rsquo;s now look at the <code>AnalyzeExpense</code> API to extract information from an invoice document.
+<img alt="s16" src="/images/4/s16.png"></p>
+<p>It is important to note that textract provides the ability to seperately extract the &ldquo;line items&rdquo; in the invoice and the &ldquo;Summary&rdquo; of the invoice.
+<img alt="s17" src="/images/4/s17.png">
+<img alt="s18" src="/images/4/s18.png"></p>
+<h3 id="step-8-extracting-identity-documents-with-amazon-textract">Step 8: Extracting identity documents with Amazon Textract</h3>
+<p>To see how extraction of identity documents works with Amazon Textract we will use a sample Passport document. Passport is a special document, i.e. an Identity document. To extract infromation from US passports and driver&rsquo;s license, Amazon Textract&rsquo;s AnalyzeID API can be used.
+<img alt="s19" src="/images/4/s19.png">
+We will use the call_textract_analyzeid tool from the amazon-textract-textractor library.
+<img alt="s20" src="/images/4/s20.png"></p>
+<p>Note that in the call to call_textract_analyzeid you can also pass an S3 path to the parameter document_pages as
+<code>call_textract_analyzeid(document_pages=[&quot;s3://bucket/prefix/doc.png&quot;])</code></p>
+<p>Let&rsquo;s look at the extracted information from the Passport document. Notice that the Keys are normalized, this means it makes it easy to parse out the required information from the response JSON from Textract.
+<img alt="s21" src="/images/4/s21.png"></p>
+
+
+
+
+
+<footer class=" footline" >
+	
+</footer>
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="/3-document-classification/step-7/" title="Classify a document with the real-time endpoint (optional)"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="/5-document-extraction-and-enrichment/" title="Document Extraction and Enrichment" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="/js/clipboard.min.js?1726829994"></script>
+    <script src="/js/perfect-scrollbar.min.js?1726829994"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1726829994"></script>
+    <script src="/js/jquery.sticky.js?1726829994"></script>
+    <script src="/js/featherlight.min.js?1726829994"></script>
+    <script src="/js/highlight.pack.js?1726829994"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/js/modernizr.custom-3.6.0.js?1726829994"></script>
+    <script src="/js/learn.js?1726829994"></script>
+    <script src="/js/hugo-learn.js?1726829994"></script>
+
+    <link href="/mermaid/mermaid.css?1726829994" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1726829994"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-158079754-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  </body>
+</html>

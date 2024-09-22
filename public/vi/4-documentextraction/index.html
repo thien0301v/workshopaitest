@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="vi" class="js csstransforms3d">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.128.0">
+    <meta name="description" content="">
+<meta name="author" content="journeyoftheaverageguy@gmail.com">
+
+    <link rel="icon" href="/images/favicon.png" type="image/png">
+
+    <title>Trích xuất Tài liệu :: AWS System Manager</title>
+
+    
+    <link href="/css/nucleus.css?1726901263" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1726901263" rel="stylesheet">
+    <link href="/css/hybrid.css?1726901263" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1726901263" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1726901263" rel="stylesheet">
+    <link href="/css/auto-complete.css?1726901263" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1726901263" rel="stylesheet">
+    <link href="/css/theme.css?1726901263" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1726901263" rel="stylesheet">
+    
+    <link href="/css/theme-workshop.css?1726901263" rel="stylesheet">
+    
+    
+
+    <script src="/js/jquery-3.3.1.min.js?1726901263"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="/vi/4-documentextraction/">
+    <nav id="sidebar" class="showVisitedLinks">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a id="logo" href="/">
+
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="30%"><defs><style>.cls-1{fill:#fff;}.cls-2{fill:#f90;fill-rule:evenodd;}</style></defs><title>AWS-Logo_White-Color</title><path class="cls-1" d="M14.09,10.85a4.7,4.7,0,0,0,.19,1.48,7.73,7.73,0,0,0,.54,1.19.77.77,0,0,1,.12.38.64.64,0,0,1-.32.49l-1,.7a.83.83,0,0,1-.44.15.69.69,0,0,1-.49-.23,3.8,3.8,0,0,1-.6-.77q-.25-.42-.51-1a6.14,6.14,0,0,1-4.89,2.3,4.54,4.54,0,0,1-3.32-1.19,4.27,4.27,0,0,1-1.22-3.2A4.28,4.28,0,0,1,3.61,7.75,6.06,6.06,0,0,1,7.69,6.46a12.47,12.47,0,0,1,1.76.13q.92.13,1.91.36V5.73a3.65,3.65,0,0,0-.79-2.66A3.81,3.81,0,0,0,7.86,2.3a7.71,7.71,0,0,0-1.79.22,12.78,12.78,0,0,0-1.79.57,4.55,4.55,0,0,1-.58.22l-.26,0q-.35,0-.35-.52V2a1.09,1.09,0,0,1,.12-.58,1.2,1.2,0,0,1,.47-.35A10.88,10.88,0,0,1,5.77.32,10.19,10.19,0,0,1,8.36,0a6,6,0,0,1,4.35,1.35,5.49,5.49,0,0,1,1.38,4.09ZM7.34,13.38a5.36,5.36,0,0,0,1.72-.31A3.63,3.63,0,0,0,10.63,12,2.62,2.62,0,0,0,11.19,11a5.63,5.63,0,0,0,.16-1.44v-.7a14.35,14.35,0,0,0-1.53-.28,12.37,12.37,0,0,0-1.56-.1,3.84,3.84,0,0,0-2.47.67A2.34,2.34,0,0,0,5,11a2.35,2.35,0,0,0,.61,1.76A2.4,2.4,0,0,0,7.34,13.38Zm13.35,1.8a1,1,0,0,1-.64-.16,1.3,1.3,0,0,1-.35-.65L15.81,1.51a3,3,0,0,1-.15-.67.36.36,0,0,1,.41-.41H17.7a1,1,0,0,1,.65.16,1.4,1.4,0,0,1,.33.65l2.79,11,2.59-11A1.17,1.17,0,0,1,24.39.6a1.1,1.1,0,0,1,.67-.16H26.4a1.1,1.1,0,0,1,.67.16,1.17,1.17,0,0,1,.32.65L30,12.39,32.88,1.25A1.39,1.39,0,0,1,33.22.6a1,1,0,0,1,.65-.16h1.54a.36.36,0,0,1,.41.41,1.36,1.36,0,0,1,0,.26,3.64,3.64,0,0,1-.12.41l-4,12.86a1.3,1.3,0,0,1-.35.65,1,1,0,0,1-.64.16H29.25a1,1,0,0,1-.67-.17,1.26,1.26,0,0,1-.32-.67L25.67,3.64,23.11,14.34a1.26,1.26,0,0,1-.32.67,1,1,0,0,1-.67.17Zm21.36.44a11.28,11.28,0,0,1-2.56-.29,7.44,7.44,0,0,1-1.92-.67,1,1,0,0,1-.61-.93v-.84q0-.52.38-.52a.9.9,0,0,1,.31.06l.42.17a8.77,8.77,0,0,0,1.83.58,9.78,9.78,0,0,0,2,.2,4.48,4.48,0,0,0,2.43-.55,1.76,1.76,0,0,0,.86-1.57,1.61,1.61,0,0,0-.45-1.16A4.29,4.29,0,0,0,43,9.22l-2.41-.76A5.15,5.15,0,0,1,38,6.78a3.94,3.94,0,0,1-.83-2.41,3.7,3.7,0,0,1,.45-1.85,4.47,4.47,0,0,1,1.19-1.37A5.27,5.27,0,0,1,40.51.29,7.4,7.4,0,0,1,42.6,0a8.87,8.87,0,0,1,1.12.07q.57.07,1.08.19t.95.26a4.27,4.27,0,0,1,.7.29,1.59,1.59,0,0,1,.49.41.94.94,0,0,1,.15.55v.79q0,.52-.38.52a1.76,1.76,0,0,1-.64-.2,7.74,7.74,0,0,0-3.2-.64,4.37,4.37,0,0,0-2.21.47,1.6,1.6,0,0,0-.79,1.48,1.58,1.58,0,0,0,.49,1.18,4.94,4.94,0,0,0,1.83.92L44.55,7a5.08,5.08,0,0,1,2.57,1.6A3.76,3.76,0,0,1,47.9,11a4.21,4.21,0,0,1-.44,1.93,4.4,4.4,0,0,1-1.21,1.47,5.43,5.43,0,0,1-1.85.93A8.25,8.25,0,0,1,42.05,15.62Z"></path><path class="cls-2" d="M45.19,23.81C39.72,27.85,31.78,30,25,30A36.64,36.64,0,0,1,.22,20.57c-.51-.46-.06-1.09.56-.74A49.78,49.78,0,0,0,25.53,26.4,49.23,49.23,0,0,0,44.4,22.53C45.32,22.14,46.1,23.14,45.19,23.81Z"></path><path class="cls-2" d="M47.47,21.21c-.7-.9-4.63-.42-6.39-.21-.53.06-.62-.4-.14-.74,3.13-2.2,8.27-1.57,8.86-.83s-.16,5.89-3.09,8.35c-.45.38-.88.18-.68-.32C46.69,25.8,48.17,22.11,47.47,21.21Z"></path></svg>
+
+</a>
+
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="/js/lunr.min.js?1726901263"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1726901263"></script>
+<script type="text/javascript">
+    
+        var baseurl = "http:\/\/localhost:1313\/\/vi";
+    
+</script>
+<script type="text/javascript" src="/js/search.js?1726901263"></script>
+
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/1-introduce/" title="Giới thiệu" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/1-introduce/">
+          Giới thiệu
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/2-prerequiste/" title="Chuẩn bị " class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/2-prerequiste/">
+          Chuẩn bị 
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/3-documentclassification/" title="Phân loại tài liệu" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/3-documentclassification/">
+          Phân loại tài liệu
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/3-documentclassification/step-1/" title="Cài đặt notebook và tải tài liệu mẫu lên Amazon S3" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/3-documentclassification/step-1/">
+          Cài đặt notebook và tải tài liệu mẫu lên Amazon S3
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/3-documentclassification/3.1-getting-started/" title="Getting Started" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/3-documentclassification/3.1-getting-started/">
+          Getting Started
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/3-documentclassification/step-2/" title="Trích xuất văn bản từ tài liệu mẫu bằng Amazon Textract" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/3-documentclassification/step-2/">
+          Trích xuất văn bản từ tài liệu mẫu bằng Amazon Textract
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/3-documentclassification/step-3/" title="Chuẩn bị tập dữ liệu CSV để huấn luyện bộ phân loại tùy chỉnh Amazon Comprehend" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/3-documentclassification/step-3/">
+          Chuẩn bị tập dữ liệu CSV để huấn luyện bộ phân loại tùy chỉnh Amazon Comprehend
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/3-documentclassification/step-4/" title="Tạo công việc huấn luyện phân loại cho Amazon Comprehend" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/3-documentclassification/step-4/">
+          Tạo công việc huấn luyện phân loại cho Amazon Comprehend
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/3-documentclassification/step-5/" title="Phân loại tài liệu với bộ phân loại tùy chỉnh của Amazon Comprehend" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/3-documentclassification/step-5/">
+          Phân loại tài liệu với bộ phân loại tùy chỉnh của Amazon Comprehend
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/3-documentclassification/step-6/" title="Tạo endpoint thời gian thực cho Amazon Comprehend (tùy chọn)" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/3-documentclassification/step-6/">
+          Tạo endpoint thời gian thực cho Amazon Comprehend (tùy chọn)
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/3-documentclassification/step-7/" title="Phân loại tài liệu với endpoint thời gian thực (tùy chọn)" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/3-documentclassification/step-7/">
+          Phân loại tài liệu với endpoint thời gian thực (tùy chọn)
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/4-documentextraction/" title="Trích xuất Tài liệu" class="dd-item 
+        
+        active
+        
+        ">
+      <a href="/vi/4-documentextraction/">
+          Trích xuất Tài liệu
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/5-documentextractionandenrichment/" title="Trích xuất và làm phong phú tài liệu" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/5-documentextractionandenrichment/">
+          Trích xuất và làm phong phú tài liệu
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/6-documentreviewandverification/" title="Xem xét và Xác minh Tài liệu" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/6-documentreviewandverification/">
+          Xem xét và Xác minh Tài liệu
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/6-documentreviewandverification/6.1/" title="Cài đặt và yêu cầu cho Amazon S3 bucket" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/6-documentreviewandverification/6.1/">
+          Cài đặt và yêu cầu cho Amazon S3 bucket
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/6-documentreviewandverification/6.2/" title="Xác minh" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/6-documentreviewandverification/6.2/">
+          Xác minh
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/7-cleanup/" title="Dọn dẹp tài nguyên" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/7-cleanup/">
+          Dọn dẹp tài nguyên
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+         
+    </ul>
+
+    
+    
+      <section id="shortcuts">
+        <h3>More</h3>
+        <ul>
+          
+              <li> 
+                  <a class="padding" href="https://www.facebook.com/groups/awsstudygroupfcj/"><i class='fab fa-facebook'></i> AWS Study Group</a>
+              </li>
+          
+        </ul>
+      </section>
+    
+
+    
+    <section id="prefooter">
+      <hr/>
+      <ul>
+      
+        <li>
+          <a class="padding">
+            <i class="fas fa-language fa-fw"></i>
+          <div class="select-style">
+            <select id="select-language" onchange="location = this.value;">
+          
+          
+          
+              
+              
+                  
+                    
+                    
+                      <option id="en" value="http://localhost:1313/4-documentextraction/">English</option>
+                    
+                  
+              
+                  
+              
+          
+              
+              
+                  
+              
+                  
+                    
+                    
+                      <option id="vi" value="http://localhost:1313/vi/4-documentextraction/" selected>Tiếng Việt</option>
+                    
+                  
+              
+          
+        </select>
+        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+          width="255px" height="255px" viewBox="0 0 255 255" style="enable-background:new 0 0 255 255;" xml:space="preserve">
+          <g>
+            <g id="arrow-drop-down">
+              <polygon points="0,63.75 127.5,191.25 255,63.75 		" />
+            </g>
+          </g>
+        </svg>
+        </div>
+        </a>
+        </li>
+      
+      
+      
+        <li><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
+      
+      </ul>
+    </section>
+    
+    <section id="footer">
+      <left>
+    
+     <b> Workshop</b> <br>
+    <img src="https://hitwebcounter.com/counter/counter.php?page=7920860&style=0038&nbdigits=9&type=page&initCount=0" title="Migrate" Alt="web counter"   border="0" /></a>  <br>
+     <b> <a href="https://cloudjourney.awsstudygroup.com/">Cloud Journey</a></b> <br>
+    <img src="https://hitwebcounter.com/counter/counter.php?page=7830807&style=0038&nbdigits=9&type=page&initCount=0" title="Total CLoud Journey" Alt="web counter"   border="0"   />
+     
+</left>
+<left>
+    <br>
+    <br>
+        <b> Last Updated </b> <br>
+        <i><font color=orange>30-01-2022</font></i>
+    </left>
+    <left>
+        <br>
+        <br>
+            <b> Team </b> <br>
+           
+            <i> <a href="https://www.linkedin.com/in/sutrinh/"  style="color:orange">Sử Trịnh  </a> <br>
+                <a href="https://www.linkedin.com/in/jotaguy"  style="color:orange">Gia Hưng </a> <br>
+                <a href="https://www.linkedin.com/in/hiepnguyendt"  style="color:orange">Thanh Hiệp </a>
+               
+        </i>
+        </left>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            <a href='/vi/'>Xử lý Tài liệu Thông minh với AWS AI Services</a> > Trích xuất Tài liệu
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#trích-xuất-dữ-liệu-từ-tài-liệu-bằng-amazon-textract">Trích xuất dữ liệu từ tài liệu bằng <strong>Amazon Textract</strong></a></li>
+        <li><a href="#phân-tích-phản-hồi-api-của-amazon-textract">Phân tích phản hồi API của Amazon Textract</a></li>
+        <li><a href="#getting-started-with-lab">Getting Started with Lab</a></li>
+        <li><a href="#step-1-thiết-lập-notebook">Step 1: Thiết lập notebook</a></li>
+        <li><a href="#bước-2-trích-xuất-dữ-liệu-không-có-cấu-trúc-bằng-amazon-textract">Bước 2: Trích xuất dữ liệu không có cấu trúc bằng <strong>Amazon Textract</strong></a></li>
+        <li><a href="#bước-3-trích-xuất-dữ-liệu-bảng-bằng-amazon-textract">Bước 3: Trích xuất dữ liệu bảng bằng Amazon Textract</a></li>
+        <li><a href="#step-4-trích-xuất-dữ-liệu-biểu-mẫu-khóagiá-trị-bằng-amazon-textract">Step 4: Trích xuất dữ liệu biểu mẫu (khóa/giá trị) bằng Amazon Textract</a></li>
+        <li><a href="#bước-5-trích-xuất-dựa-trên-truy-vấn-bằng-amazon-textract">Bước 5: Trích xuất dựa trên truy vấn bằng Amazon Textract</a></li>
+        <li><a href="#bước-6-phát-hiện-chữ-ký-với-amazon-textract">Bước 6: Phát hiện chữ ký với Amazon Textract</a></li>
+        <li><a href="#trích-xuất-hóa-đơnbiên-lai-bằng-amazon-textract">Trích xuất hóa đơn/biên lai bằng Amazon Textract</a></li>
+        <li><a href="#bước-8-trích-xuất-tài-liệu-danh-tính-bằng-amazon-textract">Bước 8: Trích xuất tài liệu danh tính bằng Amazon Textract</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              Trích xuất Tài liệu
+            </h1>
+          
+
+        
+
+
+
+	<h3 id="trích-xuất-dữ-liệu-từ-tài-liệu-bằng-amazon-textract">Trích xuất dữ liệu từ tài liệu bằng <strong>Amazon Textract</strong></h3>
+<p><strong>Amazon Textract</strong> là một dịch vụ máy học (ML) tự động trích xuất văn bản, chữ viết tay và dữ liệu từ các tài liệu quét. Nó vượt xa khả năng nhận diện ký tự quang học đơn giản (OCR) để xác định, hiểu và trích xuất dữ liệu từ các biểu mẫu và bảng. Hãy mở rộng các phần dưới đây để tìm hiểu ngắn gọn về khả năng trích xuất tài liệu của Amazon Textract.</p>
+<h3 id="phân-tích-phản-hồi-api-của-amazon-textract">Phân tích phản hồi API của Amazon Textract</h3>
+<p>Bạn có thể trích xuất văn bản và thông tin dữ liệu có cấu trúc bằng cách sử dụng các API <code>DetectDocumentText</code> và <code>AnalyzeDocument</code> của <strong>Amazon Textract</strong>. Các API này trả về dữ liệu JSON chứa từ, dòng, biểu mẫu, bảng, thông tin hình học hoặc hộp giới hạn, mối quan hệ, v.v. Phản hồi JSON này có thể khó phân tích, đặc biệt là với các tài liệu lớn hoặc nhiều trang. Để làm điều này, chúng ta sẽ sử dụng một nhóm công cụ mang tên <code>amazon-textract-textractor</code> giúp dễ dàng lấy thông tin như từ, dòng, bảng và biểu mẫu từ tài liệu, và thu thập thông tin hộp giới hạn. Dưới đây là các tính năng có sẵn:</p>
+<ul>
+<li>A <a href="https://github.com/aws-samples/amazon-textract-textractor/tree/master/caller">caller</a>  cung cấp một bộ chức năng sẵn sàng sử dụng và các triển khai mẫu để tăng tốc độ đánh giá và phát triển cho bất kỳ dự án nào sử dụng Amazon Textract, giúp dễ dàng gọi <strong>Amazon Textract</strong> bất kể loại tệp và vị trí.</li>
+<li>A <a href="https://github.com/aws-samples/amazon-textract-response-parser">response parser</a> giúp dễ dàng phân tích JSON trả về từ Amazon Textract. Thư viện này phân tích JSON và cung cấp các cấu trúc ngôn ngữ lập trình cụ thể để làm việc với các phần khác nhau của tài liệu.</li>
+<li>A <a href="https://github.com/aws-samples/amazon-textract-textractor/tree/master/prettyprinter">prettyprinter</a> cung cấp các chức năng để định dạng đầu ra nhận được từ Amazon Textract theo các định dạng dễ tiêu thụ hơn như CSV hoặc markdown.</li>
+<li>An <a href="https://github.com/aws-samples/amazon-textract-textractor/tree/master/overlayer">overlayer</a> cung cấp thông tin hình học hộp giới hạn có thể được sử dụng cho mục đích chú thích hoặc xóa.</li>
+</ul>
+<h3 id="getting-started-with-lab">Getting Started with Lab</h3>
+<p>Trong phần này, chúng ta sẽ xem xét cách trích xuất thông tin từ các tài liệu. Mở notebook <code>02-idp-document-extraction.ipynb</code> trong <strong>Amazon SageMaker Studio</strong> và làm theo các bước dưới đây.
+<img alt="s1" src="/images/4/s1.png"></p>
+<h3 id="step-1-thiết-lập-notebook">Step 1: Thiết lập notebook</h3>
+<p>Trong bước này, chúng ta sẽ chọn kernel như notebook trước đó sẽ được sử dụng trong notebook này.
+<img alt="s2" src="/images/4/s2.png">
+Sau đó chạy các script trong Bước 1.</p>
+<p>Hãy chọn một sao kê ngân hàng mà chúng ta đã phân loại trong bài tập trước.
+<img alt="s3" src="/images/4/s3.png">
+<img alt="s4" src="/images/4/s4.png"></p>
+<h3 id="bước-2-trích-xuất-dữ-liệu-không-có-cấu-trúc-bằng-amazon-textract">Bước 2: Trích xuất dữ liệu không có cấu trúc bằng <strong>Amazon Textract</strong></h3>
+<p>Trong bước này, chúng ta sẽ chủ yếu xem xét cách trích xuất thông tin văn bản (DÒNG và TỪ) từ một trong các sao kê ngân hàng. Dữ liệu văn bản dưới dạng TỪ và DÒNG có thể được trích xuất từ các tài liệu bằng cách sử dụng API <code>DetectDocumentText</code> của Amazon Textract. Đoạn mã sau gọi API để trích xuất văn bản từ tài liệu.</p>
+<p>Amazon Textract là một dịch vụ OCR được hỗ trợ bởi ML có khả năng phát hiện và trích xuất văn bản từ các tài liệu. Dữ liệu văn bản dưới dạng TỪ và DÒNG có thể được trích xuất từ các tài liệu bằng cách sử dụng API <code>DetectDocumentText</code> của Amazon Textract. Hãy trích xuất các từ và dòng từ sao kê ngân hàng.
+<img alt="s5" src="/images/4/s5.png">
+Như bạn có thể thấy, chúng ta đã có thể trích xuất DÒNG và TỪ từ tài liệu, nhưng chúng ta cũng đã mất một số định dạng cấu trúc trong tài liệu. Ví dụ, tài liệu chứa một vài bảng và chúng ta muốn trích xuất thông tin bảng trong cấu trúc bảng. Vì vậy, hãy làm điều đó tiếp theo.</p>
+<h3 id="bước-3-trích-xuất-dữ-liệu-bảng-bằng-amazon-textract">Bước 3: Trích xuất dữ liệu bảng bằng Amazon Textract</h3>
+<p>Trong bước này, chúng ta sẽ xem xét ngắn gọn cách trích xuất thông tin bảng từ sao kê ngân hàng. Sao kê ngân hàng của chúng ta có hai bảng.
+<img alt="s6" src="/images/4/s6.png">
+Như bạn có thể thấy, phản hồi từ <strong>Amazon Textract</strong> là một đối tượng JSON lớn chứa rất nhiều thông tin. Hãy phân tích dữ liệu bảng từ phản hồi này. Để làm điều này, chúng ta sẽ xem cách trích xuất các bảng bằng công cụ phân tích phản hồi Textract mà chúng ta đã cài đặt trước đó.
+<img alt="s7" src="/images/4/s7.png">
+Trong các ô mã ở trên, chúng ta đã sử dụng API <code>AnalyzeDocument</code> của Textract để trích xuất thông tin từ tài liệu và sau đó đã sử dụng trình phân tích phản hồi Textract để phân tích các bảng từ phản hồi JSON. Chúng ta có thể sử dụng các công cụ bổ sung để gọi API Textract và sử dụng công cụ trình bày đẹp để xem các bảng theo cách dễ đọc hơn một chút. Chúng ta sẽ xem cách trích xuất các bảng bằng công cụ trình bày đẹp của Textract. Chúng ta cũng sẽ sử dụng phương pháp <code>call_textract</code> từ công cụ Caller của Textract mà chúng ta đã cài đặt trước đó. Tập hợp các công cụ này giúp dễ dàng thực hiện các cuộc gọi API Textract và phân tích đầu ra JSON của nó. Trong các phần tiếp theo, chúng ta sẽ sử dụng những công cụ này để thực hiện các cuộc gọi API và sau đó để phân tích phản hồi JSON.
+<img alt="s8" src="/images/4/s8.png">
+Trong ô mã trên, chúng ta đã trích xuất các bảng dưới dạng danh sách Python và sau đó chuyển đổi chúng thành DataFrame của Pandas. Bạn cũng có thể trích xuất các bảng ở các định dạng khác như CSV, TSV, v.v.
+<img alt="s9" src="/images/4/s9.png"></p>
+<h3 id="step-4-trích-xuất-dữ-liệu-biểu-mẫu-khóagiá-trị-bằng-amazon-textract">Step 4: Trích xuất dữ liệu biểu mẫu (khóa/giá trị) bằng Amazon Textract</h3>
+<p>Hãy xem cách Amazon Textract có thể được sử dụng để trích xuất dữ liệu biểu mẫu từ tài liệu. Trong ví dụ này, chúng ta sẽ sử dụng một biểu mẫu xác nhận việc làm mẫu.
+<img alt="s10" src="/images/4/s10.png">
+Trong ví dụ trước, tài liệu của chúng ta nằm trong S3 và chúng ta đã gọi Amazon Textract bằng cách chỉ định vị trí S3 của tài liệu. Trong trường hợp này, tài liệu của chúng ta nằm trên máy tính cục bộ, chúng ta có thể tải tài liệu này lên S3, hoặc chúng ta có thể sử dụng Byte Array của tài liệu từ môi trường cục bộ của chúng ta để gọi API. Hãy sử dụng Byte Array của tài liệu cho ví dụ này. Lưu ý rằng phương pháp này chỉ áp dụng cho API Textract đồng bộ (thời gian thực), vì các API không đồng bộ chỉ hỗ trợ tài liệu đặt trong S3. Trong ô mã dưới đây, trước tiên chúng ta chuyển đổi tài liệu thành một Byte array, và sau đó gọi API <code>AnalyzeDocument</code> với tính năng FORMS. Sau đó, chúng ta sử dụng công cụ phân tích phản hồi Textract để phân tích các cặp khóa/giá trị của biểu mẫu và in chúng ra.
+<img alt="s11" src="/images/4/s11.png">
+Và kết quả là:
+<img alt="s12" src="/images/4/s12.png"></p>
+<h3 id="bước-5-trích-xuất-dựa-trên-truy-vấn-bằng-amazon-textract">Bước 5: Trích xuất dựa trên truy vấn bằng Amazon Textract</h3>
+<p>Khi xử lý một tài liệu bằng Amazon Textract, bạn có thể thêm các truy vấn vào phân tích của mình để chỉ định thông tin mà bạn cần. Điều này bao gồm việc truyền một câu hỏi, chẳng hạn như &ldquo;Số an sinh xã hội của khách hàng là gì?&rdquo; đến Amazon Textract. Amazon Textract sau đó sẽ tìm thông tin trong tài liệu cho câu hỏi đó và trả về trong một cấu trúc phản hồi tách biệt với phần còn lại của thông tin trong tài liệu. Các truy vấn có thể được xử lý riêng lẻ hoặc kết hợp với bất kỳ FeatureType nào khác, chẳng hạn như BẢNG hoặc BIỂU MẪU. Các truy vấn có thể là một công cụ mạnh mẽ trong những tình huống mà chỉ một vài thông tin quan trọng cần thiết từ một tài liệu.</p>
+<p>Hãy để lại một vài truy vấn để trích xuất từ biểu mẫu xác nhận việc làm của chúng ta.
+<img alt="s13" src="/images/4/s13.png">
+<img alt="s14" src="/images/4/s14.png"></p>
+<h3 id="bước-6-phát-hiện-chữ-ký-với-amazon-textract">Bước 6: Phát hiện chữ ký với Amazon Textract</h3>
+<p>Amazon Textract có thể phát hiện sự hiện diện của chữ ký trong các tài liệu. API AnalyzeDocument có bốn loại tính năng sau - Biểu mẫu, Bảng, Truy vấn và Chữ ký. Tính năng Chữ ký có thể được sử dụng riêng lẻ hoặc kết hợp với các loại tính năng khác. Khi được sử dụng riêng lẻ, loại tính năng Chữ ký cung cấp phản hồi json bao gồm a) vị trí và điểm số tin cậy của các chữ ký được phát hiện và b) văn bản thô (từ và dòng) từ tài liệu. Nếu tính năng Chữ ký được sử dụng cùng với tính năng Biểu mẫu mà trích xuất các cặp khóa giá trị trong một biểu mẫu, chữ ký được phát hiện sẽ được liên kết với giá trị của khóa liên quan. Tương tự, khi được sử dụng cùng với loại tính năng Bảng, chữ ký được phát hiện sẽ được liên kết với một ô trong bảng.</p>
+<p>Hãy thử phát hiện chữ ký trong biểu mẫu xác nhận việc làm của chúng ta.
+<img alt="s15" src="/images/4/s15.png"></p>
+<p>Textract đã phát hiện ba chữ ký trong tài liệu cùng với thông tin hộp giới hạn và điểm số tin cậy của chúng.</p>
+<h3 id="trích-xuất-hóa-đơnbiên-lai-bằng-amazon-textract">Trích xuất hóa đơn/biên lai bằng Amazon Textract</h3>
+<p>Bây giờ hãy xem API <code>AnalyzeExpense</code> để trích xuất thông tin từ một tài liệu hóa đơn.
+<img alt="s16" src="/images/4/s16.png"></p>
+<p>Điều quan trọng cần lưu ý là Textract cung cấp khả năng trích xuất riêng biệt &ldquo;các mục dòng&rdquo; trong hóa đơn và &ldquo;Summary&rdquo; của hóa đơn.
+<img alt="s17" src="/images/4/s17.png">
+<img alt="s18" src="/images/4/s18.png"></p>
+<h3 id="bước-8-trích-xuất-tài-liệu-danh-tính-bằng-amazon-textract">Bước 8: Trích xuất tài liệu danh tính bằng Amazon Textract</h3>
+<p>Để xem cách trích xuất tài liệu danh tính hoạt động với <strong>Amazon Textract</strong>, chúng ta sẽ sử dụng một tài liệu hộ chiếu mẫu. Hộ chiếu là một tài liệu đặc biệt, tức là một tài liệu danh tính. Để trích xuất thông tin từ hộ chiếu và giấy phép lái xe của Hoa Kỳ, API <code>AnalyzeID</code> của Amazon Textract có thể được sử dụng.
+<img alt="s19" src="/images/4/s19.png">
+Chúng ta sẽ sử dụng công cụ <code>call_textract_analyzeid</code> từ thư viện <code>amazon-textract-textractor</code>.
+<img alt="s20" src="/images/4/s20.png"></p>
+<p>Lưu ý rằng trong lệnh gọi đến <code>call_textract_analyzeid</code> bạn cũng có thể truyền một đường dẫn S3 vào tham số <code>document_pages</code> as
+<code>call_textract_analyzeid(document_pages=[&quot;s3://bucket/prefix/doc.png&quot;])</code></p>
+<p>Hãy xem thông tin đã trích xuất từ tài liệu hộ chiếu. Lưu ý rằng các khóa được chuẩn hóa, điều này giúp dễ dàng phân tích thông tin cần thiết từ phản hồi JSON từ Textract.
+<img alt="s21" src="/images/4/s21.png"></p>
+
+
+
+
+
+<footer class=" footline" >
+	
+</footer>
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="/vi/3-documentclassification/step-7/" title="Phân loại tài liệu với endpoint thời gian thực (tùy chọn)"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="/vi/5-documentextractionandenrichment/" title="Trích xuất và làm phong phú tài liệu" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="/js/clipboard.min.js?1726901263"></script>
+    <script src="/js/perfect-scrollbar.min.js?1726901263"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1726901263"></script>
+    <script src="/js/jquery.sticky.js?1726901263"></script>
+    <script src="/js/featherlight.min.js?1726901263"></script>
+    <script src="/js/highlight.pack.js?1726901263"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/js/modernizr.custom-3.6.0.js?1726901263"></script>
+    <script src="/js/learn.js?1726901263"></script>
+    <script src="/js/hugo-learn.js?1726901263"></script>
+
+    <link href="/mermaid/mermaid.css?1726901263" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1726901263"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-158079754-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  </body>
+</html>
